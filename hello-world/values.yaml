@@ -1,11 +1,3 @@
-deploymentName: "hello-deployment"
-deploymentLabel: "hello"
-replicaCount: 1
 image:
   repository: "k8s.ivancorrales.com:5000/hello-world"
   tag: "0.0.1"
-containerPort: 3030
-service:
-  type: LoadBalancer
-  port: 3030
-  targetPort: 3030

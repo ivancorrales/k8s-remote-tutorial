@@ -1,24 +1,22 @@
-{{- define "sample.deployment" -}}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: { { .Values.deploymentName } }
+  name: myapp-deployment
   labels:
-    app: { { .Values.deploymentLabel } }
+    app: myapp
 spec:
-  replicas: { { .Values.replicaCount } }
+  replicas: 1
   selector:
     matchLabels:
-      app: { { .Values.deploymentLabel } }
+      app: myapp
   template:
     metadata:
       labels:
-        app: { { .Values.deploymentLabel } }
+        app: myapp
     spec:
       containers:
-        - name: { { .Values.deploymentLabel } }
+        - name: myapp
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           ports:
-            - containerPort: { { .Values.containerPort } }
+            - containerPort: 3030
               protocol: TCP
-{{- end -}}
